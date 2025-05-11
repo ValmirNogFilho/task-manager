@@ -1,16 +1,30 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Tasks" %>
 
-<h1>Tasks</h1>
-
-<div id="tasks">
-  <% @tasks.each do |task| %>
-    <%= render task %>
-    <p>
-      <%= link_to "Show this task", task %>
-    </p>
-  <% end %>
+<div class="d-flex p-2 mt-2 align-items-center justify-content-between border-bottom border-dark text-dark container">
+<h2>Tasks</h2>
+<input class="form-control me-2 w-50" id="search-input" type="search" placeholder="Search by name or priority..." aria-label="Buscar">
 </div>
 
-<%= link_to "New task", new_task_path %>
+<div class="container mt-5" id="tasks-container">
+
+<div id="tasks">
+  <div class="d-flex flex-direction-row gap-3 p-2">
+    <%= render partial: "card", locals: {status: "to_do", title: "To Do"} %>
+    <%= render partial: "card", locals: {status: "in_progress", title: "In Progress"} %>
+    <%= render partial: "card", locals: {status: "done", title: "Done"} %>
+  </div>
+</div>
+
+</div>
+
+<% if user_signed_in? %>
+  <%= button_to new_task_path,
+  method: :get, 
+  class: "bg-warning rounded-circle position-fixed bottom-0 end-0 m-4 btn-lg", style: "width: 60px; height: 60px; z-index: 1050;",
+  data: { turbo_frame: "modal" } do %>
+    <i class="bi bi-plus-lg"
+    ></i>
+
+  <% end %>
+
+<% end %>

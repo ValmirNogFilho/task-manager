@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [ :index ]
   # GET /tasks or /tasks.json
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user&.tasks || []
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -27,6 +27,7 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to @task, notice: "Task was successfully created." }
         format.json { render :show, status: :created, location: @task }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -40,6 +41,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.html { redirect_to @task, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
+        format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @task.errors, status: :unprocessable_entity }

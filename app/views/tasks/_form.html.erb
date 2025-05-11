@@ -1,4 +1,4 @@
-<%= form_with(model: task) do |form| %>
+<%= form_with(model: task, data: { turbo: true }) do |form| %>
   <% if task.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -11,27 +11,37 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+ 
+  <div class="modal-header">
+    <%= form.text_field :title, placeholder: "Título", class:"form-control w-50 modal-title bg-white" %>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
   </div>
+  <div class="modal-body d-flex">
+  <!-- Coluna esquerda -->
+    <div class="flex-fill me-3">
+      <div class="mb-3">
+        <%= form.label :description, style: "display: block" %>
+        <%= form.rich_text_area :description%>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.rich_text_area :description %>
-  </div>
+    <!-- Coluna direita -->
+    <div style="width: 300px;">
+      <div class="mb-3 d-flex flex-column">
+        <%= form.label :priority, class: "form-label" %>
+        <%= form.select :priority, Task.priorities.keys.map { |w| [w.humanize, w] }, class: "form-select" %>
+      </div>
+      <div class="mb-3 d-flex flex-column">
+        <%= form.label :status, class: "form-label" %>
+        <%= form.select :status, Task.statuses.keys.map { |w| [w.humanize, w] }, class: "form-select" %>
+      </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      <%= form.submit "Salvar", class: "text-dark btn bg-warning" %>
+    </div>
 
-  <div>
-    <%= form.label :status %>
-    <%= form.select :status, Task.statuses.keys.map { |w| [w.humanize, w] } %>
-  </div>
 
-  <div>
-    <%= form.label :priority %>
-    <%= form.select :priority, Task.priorities.keys.map { |w| [w.humanize, w] } %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>
+

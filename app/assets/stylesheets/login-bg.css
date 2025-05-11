@@ -1,0 +1,7 @@
+.login-bg {
+    background-color: #ffc107;
+    opacity: 0.8;
+    background-image:  linear-gradient(30deg, #212529 12%, transparent 12.5%, transparent 87%, #212529 87.5%, #212529), linear-gradient(150deg, #212529 12%, transparent 12.5%, transparent 87%, #212529 87.5%, #212529), linear-gradient(30deg, #212529 12%, transparent 12.5%, transparent 87%, #212529 87.5%, #212529), linear-gradient(150deg, #212529 12%, transparent 12.5%, transparent 87%, #212529 87.5%, #212529), linear-gradient(60deg, #21252977 25%, transparent 25.5%, transparent 75%, #21252977 75%, #21252977), linear-gradient(60deg, #21252977 25%, transparent 25.5%, transparent 75%, #21252977 75%, #21252977);
+    background-size: 64px 112px;
+    background-position: 0 0, 0 0, 32px 56px, 32px 56px, 0 0, 32px 56px;
+}
