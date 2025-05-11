@@ -1,0 +1,2 @@
+<%= turbo_stream.remove "task_#{@task.id}" %>
+<%= turbo_stream.prepend "#{@task.status}", partial: "task", locals: { task: @task } %> <!-- adiciona na nova -->
