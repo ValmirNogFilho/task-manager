@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Tasks" %>
 
 <h1>Tasks</h1>
@@ -9,15 +7,6 @@
     <%= render partial: "card", locals: {status: "in_progress", title: "In Progress"} %>
     <%= render partial: "card", locals: {status: "done", title: "Done"} %>
   </div>
-  
-  <% if user_signed_in? %>
-    <% @tasks.each do |task| %>
-      <%= render task %>
-      <p>
-        <%= link_to "Show this task", task %>
-      </p>
-    <% end %>
-  <% end %>
 </div>
 
 <% if user_signed_in? %>

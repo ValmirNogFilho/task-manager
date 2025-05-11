@@ -1,22 +1,35 @@
-<div id="<%= dom_id task %>">
-  <p>
-    <strong>Title:</strong>
-    <%= task.title %>
-  </p>
+<%= link_to edit_task_path(task),
+            class: 'd-block text-decoration-none',
+            data: { turbo_frame: "modal" },
+            id: dom_id(task) do %>
+  <div class="card task-card" style="transition: .2s;"
+  onmouseover="this.style.transform='scale(1.05)'"
+  onmouseout="this.style.transform='scale(1.0)'"
+  task-title="<%= task.title %>"
+  task-priority="<%= task.priority %>"
 
-  <p>
-    <strong>Description:</strong>
-    <%= task.description %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= task.status %>
-  </p>
-
-  <p>
-    <strong>Priority:</strong>
-    <%= task.priority %>
-  </p>
-
-</div>
+  >
+    <div class="card-header d-flex align-items-center justify-content-between">
+      <%= task.title %> 
+      <%= button_to task, method: :delete, class: 'btn
+      btn-danger',
+      onclick:"event.stopPropagation()" do %>
+        <i class="bi bi-trash"></i>
+      <% end %>
+    </div>
+    <div class="card-body">
+      <%# <%= task.description.truncate(30) %>  %>
+      </div>
+    <div class="card-footer d-flex">
+      <span class="badge rounded-pill ms-auto
+      <%= case task.priority
+            when 'low' then 'bg-success'
+            when 'medium' then 'bg-warning text-dark'
+            when 'high' then 'bg-danger'
+            else 'bg-secondary'
+            end %>">
+        <%= task.priority.capitalize %>
+      </span>
+    </div>
+  </div>
+<% end %>
