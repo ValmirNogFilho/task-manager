@@ -1,8 +1,21 @@
 <div class="container-fluid", style="height: 80vh">
+  <% if resource.errors.any? %>
+    <div id="error-explanation" data-turbo-cache="false" class="position-fixed top-0 start-50 translate-middle-x mt-3 z-3" style="width: 100%; max-width: 600px;" data-turbo-cache="false">
+      <div class='alert alert-danger alert-dismissible fade show'>
+        <h4><%= pluralize(resource.errors.count, "errors") %> prohibited the sign up:</h4>
+        <ul>
+        <% resource.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+  <% end %>
   <div class="row h-100">
     <div class="col-md-6 d-flex align-items-center justify-content-center login-bg">
     </div>
-    <div class="bg-white col-md-6 d-flex align-items-center justify-content-center">
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
       <div style="width: 100%; max-width: 400px;">
         <h1 class="text-align-center w-100">Task Manager</h1>
         <% if action == "login"%>
