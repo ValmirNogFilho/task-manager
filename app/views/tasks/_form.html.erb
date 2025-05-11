@@ -22,13 +22,13 @@
   </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
+    <%= form.label :status %>
+    <%= form.select :status, Task.statuses.keys.map { |w| [w.humanize, w] } %>
   </div>
 
   <div>
-    <%= form.label :priority, style: "display: block" %>
-    <%= form.number_field :priority %>
+    <%= form.label :priority %>
+    <%= form.select :priority, Task.priorities.keys.map { |w| [w.humanize, w] } %>
   </div>
 
   <div>
