@@ -1,12 +1,20 @@
 <% content_for :title, "Tasks" %>
 
-<h1>Tasks</h1>
+<div class="d-flex p-2 mt-2 align-items-center justify-content-between border-bottom border-dark text-dark container">
+<h2>Tasks</h2>
+<input class="form-control me-2 w-50" id="search-input" type="search" placeholder="Search by name or priority..." aria-label="Buscar">
+</div>
+
+<div class="container mt-5" id="tasks-container">
+
 <div id="tasks">
   <div class="d-flex flex-direction-row gap-3 p-2">
     <%= render partial: "card", locals: {status: "to_do", title: "To Do"} %>
     <%= render partial: "card", locals: {status: "in_progress", title: "In Progress"} %>
     <%= render partial: "card", locals: {status: "done", title: "Done"} %>
   </div>
+</div>
+
 </div>
 
 <% if user_signed_in? %>
