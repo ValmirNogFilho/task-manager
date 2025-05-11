@@ -1,3 +1,4 @@
+<li style="list-style: none;" data-sortable-url-value="<%= change_status_task_path(task) %>">
 <%= link_to edit_task_path(task),
             class: 'd-block text-decoration-none',
             data: { turbo_frame: "modal" },
@@ -7,8 +8,8 @@
   onmouseout="this.style.transform='scale(1.0)'"
   task-title="<%= task.title %>"
   task-priority="<%= task.priority %>"
-
   >
+
     <div class="card-header d-flex align-items-center justify-content-between">
       <%= task.title %> 
       <%= button_to task, method: :delete, class: 'btn
@@ -33,3 +34,4 @@
     </div>
   </div>
 <% end %>
+</li>

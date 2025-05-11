@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, skip: [ :passwords ]
   resources :tasks
+  put "task/:id/move_to_column", to: "tasks#change_status", as: :change_status_task
 
   root "tasks#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
