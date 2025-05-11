@@ -1,0 +1,16 @@
+<div class="container-fluid", style="height: 80vh">
+  <div class="row h-100">
+    <div class="col-md-6 d-flex align-items-center justify-content-center login-bg">
+    </div>
+    <div class="bg-white col-md-6 d-flex align-items-center justify-content-center">
+      <div style="width: 100%; max-width: 400px;">
+        <h1 class="text-align-center w-100">Task Manager</h1>
+        <% if action == "login"%>
+            <%=render "devise/sessions/form"%>
+        <% elsif action == "signup" %>
+            <%=render "devise/registrations/form"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

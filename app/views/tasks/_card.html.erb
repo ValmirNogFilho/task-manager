@@ -1,10 +1,10 @@
 <div class="card text-white bg-dark mb-3 w-100">
   <div class="card-header"><strong><%= title %></strong></div>
-  <% if user_signed_in? %>
     <div id="<%= status %>" class="card-body d-flex flex-column gap-3 overflow-auto" style="height: 50vh;">
-      <% @tasks.select { |t| t.status == status }.each do |task| %>
-        <%= render task %>
+      <% if user_signed_in? %>
+        <% @tasks.select { |t| t.status == status }.each do |task| %>
+          <%= render task %>
+        <% end %>
       <% end %>
     </div>
-  <% end %>
 </div>
