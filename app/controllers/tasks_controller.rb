@@ -59,6 +59,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def change_status
+    task_id = params[:id]
+    status = params[:status]
+
+    task = Task.find(task_id)
+    task.update(status: status)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task

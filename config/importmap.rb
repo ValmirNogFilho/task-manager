@@ -9,3 +9,5 @@ pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
 pin "bootstrap", to: "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
 pin "bootstrap-icons", to: "https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+pin "sortablejs" # @1.15.6
+pin "@rails/request.js", to: "@rails--request.js.js" # @0.0.12
