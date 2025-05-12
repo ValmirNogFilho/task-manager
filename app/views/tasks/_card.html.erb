@@ -3,10 +3,8 @@
     <ul id="<%= status %>"
     data-controller="sortable"
     class="card-body d-flex flex-column gap-3 overflow-auto" style="height: 50vh;">
-      <% if user_signed_in? %>
-        <% @tasks.select { |t| t.status == status }.each do |task| %>
-          <%= render task %>
-        <% end %>
+      <% @tasks.select { |t| t.status == status }.each do |task| %>
+        <%= render task %>
       <% end %>
     </ul>
 </div>
