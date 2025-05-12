@@ -3,7 +3,7 @@
             class: 'd-block text-decoration-none',
             data: { turbo_frame: "modal" },
             id: dom_id(task) do %>
-  <div class="card task-card" style="transition: .2s;"
+  <div class="card task-card" style="transition: .2s; height: 10rem"
   onmouseover="this.style.transform='scale(1.05)'"
   onmouseout="this.style.transform='scale(1.0)'"
   task-title="<%= task.title %>"
@@ -19,7 +19,7 @@
       <% end %>
     </div>
     <div class="card-body">
-      <%= raw task.description%>
+      <%= truncate(strip_tags(task.description.to_s), length: 30)%>
       </div>
     <div class="card-footer d-flex">
       <span class="badge rounded-pill ms-auto
